@@ -6,6 +6,22 @@ const express = require('express');
 const giftIdeas = require('./giftIdeasData.js');
 const app = express();
 const PORT = 3000;
+
+
+app.get('/',(req,res)=>{
+  const htmllist=`
+  <h1>Active EndPoints : </h1>
+  <ul>
+  <li>
+  <div>
+  <span>/api/gifts/search --->Giftia Gifts Api </span>
+  <span>Ex: [domain]/api/gifts/search?interests=Technology%20%26%20Gadgets&occasions=Birthday&relations=Friend&budgets=1000%20-%202500</span>
+  </div>
+  </li>
+  </ul>
+  `
+  res.send(htmllist)
+})
 // Single search endpoint - requires all 4 parameters
 app.get('/api/gifts/search', (req, res) => {
   const { interests, occasions, relations, budgets } = req.query;
